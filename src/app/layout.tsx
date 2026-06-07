@@ -1,24 +1,21 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
-import { Navbar } from '@/components/Navbar';
-import { AuthProvider } from '@/components/AuthProvider';
-
-const inter = Inter({ subsets: ['latin'] });
+import type { Metadata } from "next";
+import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Providers from "@/components/Providers";
 
 export const metadata: Metadata = {
-  title: 'DevConnect - Developer Community',
-  description: 'Share projects, write articles, and connect with developers',
+  title: "DevConnect - Developer Social Platform",
+  description: "Connect with developers, share projects, and write technical articles"
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <AuthProvider>
+      <body className="bg-gray-50 min-h-screen">
+        <Providers>
           <Navbar />
-          <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">{children}</main>
-        </AuthProvider>
+          <main className="max-w-7xl mx-auto px-4 py-8">{children}</main>
+        </Providers>
       </body>
     </html>
   );
